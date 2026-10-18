@@ -151,7 +151,8 @@ def test_classify():
     assert classify(pre + fib) == "fibonacci"
     assert classify(pre + [pow(3, i, 256) for i in range(16)]) == "geometric"
     assert classify(pre + [1, 2]) == "short"
-    assert classify(pre + [random.Random(0).randrange(256) for _ in range(30)]) == "other"
+    rng = random.Random(0)
+    assert classify(pre + [rng.randrange(256) for _ in range(30)]) == "other"
 
 
 if __name__ == "__main__":
